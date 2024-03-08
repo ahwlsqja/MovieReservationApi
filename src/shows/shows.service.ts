@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Show } from './entities/show.entity';
 import { Category } from './types/category.type';
+import { CreateShowDto } from './dto/show.create.dto';
 
 @Injectable()
 export class ShowsService {
@@ -13,13 +14,12 @@ export class ShowsService {
         private readonly showRepository: Repository<Show>
     ){}
 
-    async createShow(title: string, showDate: Date, location: string, image: string, category: Category){
+    async createShow(userId: number, createShowDto : CreateShowDto){
         await this.showRepository.save({
-            title,
-            showDate,
-            location,
-            image,
-            category,
+            user: {
+                id: userId,
+            },
+            ...createShowDto
         });
     }
 }

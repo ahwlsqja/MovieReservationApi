@@ -27,7 +27,7 @@ export class Reservation {
     })
     @JoinColumn([{ name: 'showId', referencedColumnName: 'id'}])
     show: Show;
-
+    
     @ManyToOne(() => UsersModel, (user) => user.reservation, {
         onDelete: 'CASCADE',
     })

@@ -1,7 +1,11 @@
-import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { RolesEnum } from "../const/roles.const";
 import { Reservation } from "src/reservations/entities/reservation.entity";
 
+
+@Entity({
+    name: 'users',
+})
 export class UsersModel{
     @PrimaryGeneratedColumn()
     id: number;

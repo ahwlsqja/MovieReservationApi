@@ -4,10 +4,11 @@ import { AppModule } from './app.module';
 // import { HttpExceptionFilter } from './http-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import passport from 'passport';
-import cookieParser from 'cookie-parser';
-import session from 'express-session';
+import * as passport from 'passport';
+import * as cookieParser from 'cookie-parser';
+import * as session from 'express-session'
 declare const module: any;
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
@@ -18,6 +19,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addCookieAuth('connect.sid')
     .build();
+    
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   app.use(cookieParser());
@@ -25,7 +27,7 @@ async function bootstrap() {
     session({
       resave: false,
       saveUninitialized: false,
-      secret: process.env.COOKIE_SECRET,
+      secret: "1234",
       cookie: {
         httpOnly: true,
       },
