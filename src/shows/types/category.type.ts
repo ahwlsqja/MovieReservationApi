@@ -1,5 +1,6 @@
 export enum Category{
-    ACTION = 'ACTION',
-    MELLOW = 'MELLOW',
-    MUSIC = 'MUSIC',
+    MUSICAL = 'musical',
+    PLAY = 'play',
+    CONCERT = 'concert',
+    OPERA = 'opera',
 }
